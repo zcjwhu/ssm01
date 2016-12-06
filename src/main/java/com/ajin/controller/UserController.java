@@ -17,7 +17,7 @@ public class UserController {
 
     @RequestMapping("/selectUserById")
     public ModelAndView selectUserById(){
-        int id=1;
+        int id=2;
         User user = userService.selectUserById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user",user);
