@@ -11,6 +11,9 @@
   <sql id="Base_Column_List" >
     id, name, password
   </sql>
+  <select id="selectUserByName" parameterType="String" resultType="com.ajin.model.User">
+    select * from userinfo where name=#{name}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

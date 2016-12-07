@@ -1,25 +1,26 @@
+<%@ page contentType="text/html; charset=utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>登录</title>
 </head>
 <body >
 <div  style="margin:100px auto;width: 600px;height:400px;background-color: lavender;text-align: center">
     <br>
     <form method="post" action="/doLogin.action">
-    <h3>sign in</h3>
+    <h3>登录</h3>
     <br>
     <br>
-    <label>username:</label><input type="text">
+    <label>用户名:</label><input type="text" name="username">
     <br> <br>
-    <label>password:</label><input type="password">
+    <label>密&nbsp;&nbsp;&nbsp;码:</label><input type="password" name="password">
     <br><br> <br>
     <div style="text-align: center">
-        <button type="submit">login</button>&nbsp;&nbsp;
-        <button type="reset">reset</button>
+        <button type="submit">登录</button>&nbsp;&nbsp;
+        <button type="reset">重置</button>
         <br>
-        <p><a href="register.jsp">Don't hava an accout?Click here to regist!</a></p>
+        <p><a href="register.jsp">还没有帐号？点击这里注册！</a></p>
     </div>
     </form>
 </div>

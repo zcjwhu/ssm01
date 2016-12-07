@@ -14,10 +14,15 @@ public class UserService {
     private UserMapper userMapper;
 
     public User selectUserById(Integer id){
+
         return userMapper.selectByPrimaryKey(id);
     }
 
     public void deleteUserById(Integer id){
         userMapper.deleteByPrimaryKey(id);
+    }
+
+    public User selectUserByName(String name){
+        return userMapper.selectUserByName(name);
     }
 }
