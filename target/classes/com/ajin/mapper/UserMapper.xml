@@ -24,9 +24,9 @@
     delete from userinfo
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.ajin.model.User" >
-    insert into userinfo (id, name, password)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, #{password,jdbcType=CHAR})
+  <insert id="insertUser" parameterType="com.ajin.model.User" >
+    insert into userinfo (name, password)
+    values ( #{name,jdbcType=CHAR}, #{password,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ajin.model.User" >
     insert into userinfo

@@ -5,7 +5,7 @@ import com.ajin.model.User;
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(User record);
+    int insertUser(User record);
 
     int insertSelective(User record);
 

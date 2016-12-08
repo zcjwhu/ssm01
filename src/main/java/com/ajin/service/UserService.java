@@ -25,4 +25,9 @@ public class UserService {
     public User selectUserByName(String name){
         return userMapper.selectUserByName(name);
     }
+
+    public Integer insertUser(User user){
+        int id=userMapper.insertUser(user);
+        return id;
+    }
 }

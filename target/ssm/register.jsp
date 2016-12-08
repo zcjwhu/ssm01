@@ -7,41 +7,37 @@
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
             //请求json,输出json
             $("#zhuce").click(function () {
+                var username=$("#username").val();
+                var password=$("#password").val();
+                var repeatpwd=$("#repeatpwd").val();
+                if(password!=repeatpwd){
+                    alert("两次密码不一致！")
+                }
+                var data={
+                    "username":username,
+                    "password":password,
+                    "repeatpwd":repeatpwd
+                };
+                data=JSON.stringify(data);
                 $.ajax({
                     type:'post',
                     url:'${pageContext.request.contextPath}/doRegist.action',
                     //这里设置contentType为json
                     contentType:'application/json;charset=utf-8',
                     //数据格式时json串
-                    data:'{"username":"zcj","password":"admin","repeatpwd":"admin"}',
+                    data:data,
                     success:function (result) {
-                        alert(result)
+                        alert("注册成功！");
+                        location.href="${pageContext.request.contextPath}/login.jsp";
                     },
                     error:function (result) {
-
+                        alert("注册失败！");
                     }
                 });
             });
-            //请求key-value,输出json
-            $("#regist").click(function () {
-                $.ajax({
-                    type:'post',
-                    url:'${pageContext.request.contextPath}/doRegist.action',
-                    //这里设置contentType为不需要设置，默认就好
-                    //数据格式为key-value
-                    data:'username=zcj&password=admin&repeatpwd=admin',
-                    success:function (result) {
-                        alert(result.username);
-                    },
-                    error:function (result) {
-
-                    }
-                });
-            });
-
-
         });
     </script>
 </head>
@@ -59,7 +55,6 @@
     <br><br>
     <div style="text-align: center">
         <button id="zhuce">注册</button>&nbsp;&nbsp;
-        <button id="regist">注册1</button>&nbsp;&nbsp;
     </div>
 </div>
 </body>

@@ -31,12 +31,19 @@ public class UserController {
         return modelAndView;
     }
 
+    @RequestMapping("/doRegist")
+    public @ResponseBody Integer doRegist(@RequestBody UserVo userVo){
+        User user=new User();
+        user.setName(userVo.getUsername());
+        user.setPassword(userVo.getPassword());
+        return  userService.insertUser(user);
+    }
+
     @RequestMapping("/doLogin")
-    //方法三
-    public ModelAndView doLogin(UserVo userVo){
-        User user =userService.selectUserByName(userVo.getUsername());
+    public ModelAndView doLogin(HttpServletRequest request){
+        User user =userService.selectUserByName(request.getParameter("username"));
         ModelAndView modelAndView = new ModelAndView();
-        if(user.getPassword().equals(userVo.getPassword())){
+        if(user.getPassword().equals(request.getParameter("password"))){
             modelAndView.addObject("user",user);
             modelAndView.setViewName("main");
         }else{
@@ -45,34 +52,6 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping("/doRegist")
-    public @ResponseBody UserVo doRegist(UserVo userVo){
-        return userVo;
-    }
-    //方法二
-//    public ModelAndView doLogin(HttpServletRequest request){
-//        User user =userService.selectUserByName(request.getParameter("username"));
-//        ModelAndView modelAndView = new ModelAndView();
-//        if(user.getPassword().equals(request.getParameter("password"))){
-//            modelAndView.addObject("user",user);
-//            modelAndView.setViewName("main");
-//        }else{
-//
-//        }
-//        return modelAndView;
-//    }
-    //方法一
-//    public ModelAndView doLogin(String username,String password){
-//        User user =userService.selectUserByName(username);
-//        ModelAndView modelAndView = new ModelAndView();
-//        if(user.getPassword().equals(password)){
-//            modelAndView.addObject("user",user);
-//            modelAndView.setViewName("main");
-//        }else{
-//
-//        }
-//        return modelAndView;
-//    }
 
     @RequestMapping("/selectUserById")
     public ModelAndView selectUserById(){
