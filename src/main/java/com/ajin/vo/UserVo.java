@@ -4,6 +4,15 @@ package com.ajin.vo;
 public class UserVo {
     private String username;
     private String password;
+    private String repeatpwd;
+
+    public String getRepeatpwd() {
+        return repeatpwd;
+    }
+
+    public void setRepeatpwd(String repeatpwd) {
+        this.repeatpwd = repeatpwd;
+    }
 
     public String getUsername() {
         return username;

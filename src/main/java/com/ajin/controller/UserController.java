@@ -5,8 +5,10 @@ import com.ajin.service.UserService;
 import com.ajin.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,16 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @RequestMapping("/main")
+    public ModelAndView main(@RequestParam(value = "name") String username ){
+        User user=new User();
+        user.setName(username);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user",user);
+        modelAndView.setViewName("main");
+        return modelAndView;
+    }
 
     @RequestMapping("/doLogin")
     //方法三
@@ -31,6 +43,11 @@ public class UserController {
 
         }
         return modelAndView;
+    }
+
+    @RequestMapping("/doRegist")
+    public @ResponseBody UserVo doRegist(UserVo userVo){
+        return userVo;
     }
     //方法二
 //    public ModelAndView doLogin(HttpServletRequest request){
