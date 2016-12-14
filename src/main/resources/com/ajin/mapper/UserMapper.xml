@@ -8,26 +8,32 @@
       <arg column="password" jdbcType="CHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+
   <sql id="Base_Column_List" >
     id, name, password
   </sql>
+
   <select id="selectUserByName" parameterType="String" resultType="com.ajin.model.User">
     select * from userinfo where name=#{name}
   </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from userinfo
     where id = #{id,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from userinfo
     where id = #{id,jdbcType=INTEGER}
   </delete>
+
   <insert id="insertUser" parameterType="com.ajin.model.User" >
     insert into userinfo (name, password)
     values ( #{name,jdbcType=CHAR}, #{password,jdbcType=CHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.ajin.model.User" >
     insert into userinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -72,3 +78,4 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
+
